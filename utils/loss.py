@@ -7,8 +7,13 @@ from utils.metrics import bbox_iou
 from utils.torch_utils import is_parallel
 
 
-def smooth_BCE(eps=0.1):  # https://github.com/ultralytics/yolov3/issues/238#issuecomment-598028441
-    # return positive, negative label smoothing BCE targets
+def smooth_BCE(eps=0.1):
+    """
+    Return positive, negative label smoothing BCE targets
+    """
+    # Suggestion 5: Instead of using torch.ones(7, device=targets.device), use torch.ones_like(targets, shape=(7,))
+    gain = torch.ones_like(targets, shape=(7,))  # normalized to gridspace gain
+
     return 1.0 - 0.5 * eps, 0.5 * eps
 
 

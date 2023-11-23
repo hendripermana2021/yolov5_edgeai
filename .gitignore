@@ -28,6 +28,7 @@ runs/*
 !data/images/zidane.jpg
 !data/images/bus.jpg
 !data/*.sh
+Spark-Dataset/
 
 results*.txt
 results*.csv
